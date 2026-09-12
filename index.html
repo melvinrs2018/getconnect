@@ -471,17 +471,14 @@
 
         .about-image {
             position: relative;
+            border-radius: 20px;
+            overflow: hidden;
         }
 
-        .about-image-main {
+        .about-image img {
             width: 100%;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-content h2 {
@@ -589,14 +586,10 @@
             font-size: 20px;
         }
 
-        .contact-item-text h4 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
         .contact-item-text p {
-            color: #888;
-            font-size: 14px;
+            color: #ccc;
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .contact-form {
@@ -644,16 +637,65 @@
             min-height: 120px;
         }
 
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid var(--primary);
+        }
+
+        .form-success i {
+            font-size: 64px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-success h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .form-success p {
+            color: #aaa;
+            font-size: 15px;
+        }
+
         /* FOOTER */
         footer {
             background: var(--dark);
-            padding: 30px 5%;
+            padding: 40px 5%;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .footer-back-to-top {
+            margin-bottom: 25px;
+        }
+
+        .footer-back-to-top a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .footer-back-to-top a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.6);
+        }
+
         .footer-copyright {
-            font-size: 14px;
+            font-size: 11px;
             color: #666;
             margin-bottom: 10px;
         }
@@ -933,9 +975,7 @@
     <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-image fade-in">
-            <div class="about-image-main">
-                <i class="fas fa-rocket"></i>
-            </div>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="Future Technology">
         </div>
         <div class="about-content fade-in">
             <div class="section-tag">About Us</div>
@@ -976,7 +1016,6 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-item-text">
-                            <h4>Email</h4>
                             <p>melvin-rs@outlook.com</p>
                         </div>
                     </div>
@@ -985,7 +1024,6 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-item-text">
-                            <h4>Phone</h4>
                             <p>+32492825582</p>
                         </div>
                     </div>
@@ -994,51 +1032,62 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-item-text">
-                            <h4>Location</h4>
                             <p>Prieelstraat - 1730 Asse, Belgium</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <form class="contact-form fade-in" id="contact-form">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="Your name" required>
+            <div class="contact-form fade-in" id="contact-form-container">
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+32 000 000 000">
+                    </div>
+                    <div class="form-group">
+                        <label>Service of Interest</label>
+                        <select required>
+                            <option value="">Select a service</option>
+                            <option value="web">Web Design</option>
+                            <option value="design">Graphic Design</option>
+                            <option value="marketing">Digital Marketing</option>
+                            <option value="mobile">Mobile App Development</option>
+                            <option value="software">Software Development</option>
+                            <option value="backend">Backend Development</option>
+                            <option value="complete">Complete Package</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; border: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: var(--light); box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="form-success" id="form-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent successfully. We'll get back to you soon!</p>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="your@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" placeholder="+32 000 000 000">
-                </div>
-                <div class="form-group">
-                    <label>Service of Interest</label>
-                    <select required>
-                        <option value="">Select a service</option>
-                        <option value="web">Web Design</option>
-                        <option value="design">Graphic Design</option>
-                        <option value="marketing">Digital Marketing</option>
-                        <option value="mobile">Mobile App Development</option>
-                        <option value="software">Software Development</option>
-                        <option value="backend">Backend Development</option>
-                        <option value="complete">Complete Package</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea placeholder="Tell us about your project..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; border: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: var(--light); box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);">
-                    Send Message <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
+        <div class="footer-back-to-top">
+            <a href="#home" title="Back to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
         <p class="footer-copyright">© COPYRIGHT 2026 GETCONNECT - ALL RIGHTS RESERVED</p>
         <p class="footer-powered">POWERED BY GETCONNECT</p>
     </footer>
@@ -1098,12 +1147,24 @@
 
         fadeElements.forEach(el => observer.observe(el));
 
-        // FORM SUBMISSION
+        // FORM SUBMISSION WITH SUCCESS MESSAGE
         const form = document.getElementById('contact-form');
+        const formContainer = document.getElementById('contact-form-container');
+        const successMessage = document.getElementById('form-success');
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Message sent successfully! We will contact you soon.');
-            form.reset();
+            
+            // Hide form and show success message
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Optional: Reset form after 5 seconds and show it again
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'block';
+                successMessage.style.display = 'none';
+            }, 5000);
         });
 
         // SMOOTH SCROLL
